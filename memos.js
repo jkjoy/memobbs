@@ -564,8 +564,7 @@ async function updateHtml(data) {
     let creatorName = memo.creatorName;
     let createdTs = memo.createdTs;
     let in2Week = Math.floor(new Date().getTime()/ 1000) - createdTs <= 1209600 ? "in2week" : "out2week";
-    //let memosId = createdTs+memo.id;
-	let memosId = memo.id; // 直接用 uid 或数字 id，保持字符串
+    let memosId = createdTs+memo.id;
     let memosVisibility = memo.visibility
     let twikooEnv = memo.twikoo;
     let artalkEnv = memo.artalk;
@@ -1332,8 +1331,7 @@ function loadTwikoo(i) {
   let twikooPath = i.getAttribute("data-path")
   let twikooId = i.getAttribute("data-id")
   let twikooTime = i.getAttribute("data-time")
-  //let twikooDom = document.getElementById(`${Number(twikooTime)+Number(twikooId)}`);
-  let twikooDom = document.getElementById(memo.id); 
+  let twikooDom = document.getElementById(`${Number(twikooTime)+Number(twikooId)}`);
   let twikooCon = "<div id='twikoo'></div>"
   if (twikooDom.classList.contains('d-none')) {
     document.querySelectorAll('.item-comment').forEach((item) => {item.classList.add('d-none');})
